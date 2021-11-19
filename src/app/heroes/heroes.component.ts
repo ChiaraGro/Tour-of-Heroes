@@ -36,11 +36,6 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  onSelect(hero:Hero): void{
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-  }
-
 
   getHeroes():void{
     this.heroService.getHeroes()
@@ -48,4 +43,11 @@ export class HeroesComponent implements OnInit {
   }
   //Observable.subscribe() is the critical difference. The previous version assigns an array of heroes to the component's heroes property. The assignment occurs synchronously, as if the server could return heroes instantly or the browser could freeze the UI while it waited for the server's response.
 //The new version waits for the Observable to emit the array of heroes. he subscribe() method passes the emitted array to the callback, which sets the component's heroes property.
+
+
+// onSelect(hero:Hero): void{
+//   this.selectedHero = hero;
+//   this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+// }
+
 }
