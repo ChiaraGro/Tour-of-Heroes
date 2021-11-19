@@ -31,13 +31,21 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  getHeroes(): void{
-    this.heroes = this.heroService.getHeroes();
-  }
+  // getHeroes(): void{
+  //   this.heroes = this.heroService.getHeroes();
+  // }
 //metodo per recuperare gli eroi dal service
 
 
 
+getHeroes():void{
+  this.heroService.getHeroes()
+  .subscribe(heroes => this.heroes = heroes);
+}
+
+
+//Observable.subscribe() is the critical difference. The previous version assigns an array of heroes to the component's heroes property. The assignment occurs synchronously, as if the server could return heroes instantly or the browser could freeze the UI while it waited for the server's response.
+//The new version waits for the Observable to emit the array of heroes. he subscribe() method passes the emitted array to the callback, which sets the component's heroes property.
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
