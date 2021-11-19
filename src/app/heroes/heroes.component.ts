@@ -1,4 +1,8 @@
-import { HEROES } from './../mock-heroes';
+import { HeroService } from './../hero.service';
+
+// import { HEROES } from './../mock-heroes';
+//non serve più l'import, si sostituisce con il service
+
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 
@@ -9,7 +13,10 @@ import { Hero } from '../hero';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-heroes = HEROES;
+// heroes = HEROES;
+//non serve più si sostituisce con quelo sotto
+
+  heroes: Hero[] = [];
 
 
   hero : Hero = {
@@ -24,9 +31,17 @@ heroes = HEROES;
     this.selectedHero = hero;
   }
 
-  constructor() { }
+  getHeroes(): void{
+    this.heroes = this.heroService.getHeroes();
+  }
+//metodo per recuperare gli eroi dal service
+
+
+
+  constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
+    this.getHeroes();
   }
 
 }
