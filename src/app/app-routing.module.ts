@@ -5,7 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path: 'heroes', component: HeroesComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'dashboard', component: DashboardComponent},
+
+  {path: '', redirectTo:'/dashboard', pathMatch:'full'}
+  //To make the application navigate to the dashboard automatically
 ];
 
 
